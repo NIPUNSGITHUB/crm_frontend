@@ -16,15 +16,27 @@
             <th>Active</th>
           </tr>
         </thead>
-        <tbody>
-          <tr v-for="(customer,index) in customers" :key="customer.id">
-            <td>{{(index+1)}}</td>
-            <td>{{customer.title}}</td>
-            <td>{{customer.first_name}}</td>
-            <td>{{customer.last_name}}</td>
-            <td>{{customer.email}}</td>
-            <td>{{customer.phone_number}}</td>
-            <td><i class="fa fa-caret-right" aria-hidden="true"></i></td>
+        <tbody v-if="customers.length > 0" style="height: 15rem">
+          <tr v-for="(customer, index) in customers" :key="customer.id">
+            <td>{{ (index+1) }}</td>
+            <td>{{ customer.title }}</td>
+            <td>{{ customer.first_name }}</td>
+            <td>{{ customer.last_name }}</td>
+            <td>{{ customer.email }}</td>
+            <td>{{ customer.phone_number }}</td>
+            <td>
+              <router-link
+                :to="'/manage-customer/' + customer.id"
+                class="btn btn-sm btn-warning"
+              >
+                Edit</router-link
+              >
+            </td>
+          </tr>
+        </tbody>
+        <tbody v-else style="height: 15rem">
+          <tr>
+            <td class="text-center" colspan="7">No records found!</td>
           </tr>
         </tbody>
       </table>
@@ -44,9 +56,11 @@ export default {
   },
   methods: {
     getActiveCustomers() {
-      this.axios.get(process.env.VUE_APP_API_BaseURL + "customers").then((response) => {
-           this.customers = response.data.data; 
-      }); 
+      this.axios
+        .get(process.env.VUE_APP_API_BaseURL + "customers")
+        .then((response) => {
+          this.customers = response.data.data;
+        });
     },
   },
 };

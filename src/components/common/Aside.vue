@@ -10,7 +10,7 @@
         Customers <span class="badge">12</span></router-link
       >
       
-       <router-link to="/manage-customer" class="list-group-item"
+       <router-link :to="'/manage-customer/0'"  class="list-group-item"
         ><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
         Manage Customers <span class="badge">33</span></router-link
       >

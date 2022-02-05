@@ -15,7 +15,7 @@ import CustomerManage from "./components/customer/CustomerManage.vue";
 
 const routes = [
   { path: "/index-page", component: CustomerList },
-  { path: "/manage-customer", component: CustomerManage },
+  { path: "/manage-customer/:id?", component: CustomerManage },
 ];
 
 const router = new VueRouter({

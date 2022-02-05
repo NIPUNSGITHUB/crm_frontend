@@ -2,16 +2,23 @@
   <!-- Website Overview -->
   <div class="panel panel-default">
     <div class="panel-heading main-color-bg">
-      <h3 class="panel-title">Customer Create</h3>
+      <h3 class="panel-title">
+        Customer {{ customer.id == 0 ? "Create" : "Update" }}
+      </h3>
     </div>
     <div class="panel-body">
       <form @submit.prevent="submitForm">
         <div class="form-group">
-          <label>Title</label> 
-            <select class="form-control" v-model="customer.title" name="" id="title">
-              <option value="Mr">Mr</option>
-              <option value="Mrs">Mrs</option> 
-            </select>  
+          <label>Title</label>
+          <select
+            class="form-control"
+            v-model="customer.title"
+            name=""
+            id="title"
+          >
+            <option value="Mr">Mr</option>
+            <option value="Mrs">Mrs</option>
+          </select>
         </div>
 
         <div class="form-group">
@@ -47,7 +54,6 @@
           <small v-if="!lNameIsValid" class="form-text text-danger"
             >The last name feild is required</small
           >
-          <!-- <span class="text-danger" v-if="errors != null">{{ errors.last_name[0] }}</span> -->
         </div>
         <div class="form-group">
           <label>Phone Number</label>
@@ -73,6 +79,7 @@
         <div class="form-group">
           <label>Email</label>
           <input
+            :disabled="customer.id != 0"
             type="text"
             class="form-control"
             placeholder="Email"
@@ -105,10 +112,10 @@ export default {
       customer: {
         id: 0,
         title: "Mr",
-        first_name: '',
-        last_name: '',
-        phone_number: '',
-        email: '',
+        first_name: "",
+        last_name: "",
+        phone_number: "",
+        email: "",
         is_active: 1,
       },
     };
@@ -139,6 +146,11 @@ export default {
       return a;
     },
   },
+  mounted() {
+    if (this.$route.params.id != "0") {
+      this.getCustomerById(this.$route.params.id);
+    }
+  },
   methods: {
     submitForm() {
       if (this.formIsValid) {
@@ -160,7 +172,7 @@ export default {
         .catch(function (error) {
           return error;
         });
- 
+
       if (result.response != undefined && result.response.status == 400) {
         this.errors = result.response.data.message;
         console.log(this.errors);
@@ -172,6 +184,7 @@ export default {
           showConfirmButton: false,
           timer: 1500,
         });
+        this.resetCustomer();
       } else {
         Swal.fire({
           position: "top-end",
@@ -182,8 +195,58 @@ export default {
         });
       }
     },
-    updateCustomer(id) {
-      console.log(id);
+
+    async updateCustomer(id) {
+      this.errors = null;
+      let result = await this.axios
+        .put(process.env.VUE_APP_API_BaseURL + "customers/" + id, this.customer)
+        .then(function (response) {
+          return response;
+        })
+        .catch(function (error) {
+          return error;
+        });
+
+      if (result.response != undefined && result.response.status == 400) {
+        this.errors = result.response.data.message;
+        console.log(this.errors);
+      } else if (result.status == 200) {
+        Swal.fire({
+          position: "top-end",
+          icon: "success",
+          title: "Customer sucessfully updated",
+          showConfirmButton: false,
+          timer: 1500,
+        });
+        this.resetCustomer();
+      } else {
+        Swal.fire({
+          position: "top-end",
+          icon: "error",
+          title: "Customer update fail",
+          showConfirmButton: false,
+          timer: 1500,
+        });
+      }
+    },
+
+    getCustomerById(id) {
+      this.axios
+        .get(process.env.VUE_APP_API_BaseURL + "customer/" + id)
+        .then((response) => {
+          this.customer = response.data.data[0];
+          console.log(this.customer);
+        });
+    },
+
+    resetCustomer() {
+      this.customer.id = 0;
+      this.customer.title = "Mr";
+      this.customer.first_name = "";
+      this.customer.last_name = "";
+      this.customer.phone_number = "";
+      this.customer.email = "";
+      this.customer.is_active = 1;
     },
   },
 };
