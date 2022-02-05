@@ -174,8 +174,7 @@ export default {
         });
 
       if (result.response != undefined && result.response.status == 400) {
-        this.errors = result.response.data.message;
-        console.log(this.errors);
+        this.errors = result.response.data.message; 
       } else if (result.status == 200) {
         Swal.fire({
           position: "top-end",
@@ -208,8 +207,7 @@ export default {
         });
 
       if (result.response != undefined && result.response.status == 400) {
-        this.errors = result.response.data.message;
-        console.log(this.errors);
+        this.errors = result.response.data.message; 
       } else if (result.status == 200) {
         Swal.fire({
           position: "top-end",

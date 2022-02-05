@@ -12,10 +12,14 @@ Vue.config.productionTip = false;
 
 import CustomerList from "./components/customer/CustomerList.vue";
 import CustomerManage from "./components/customer/CustomerManage.vue";
+import ImportFromFile from "./components/customer/ImportFromFile.vue";
+
+
 
 const routes = [
   { path: "/index-page", component: CustomerList },
   { path: "/manage-customer/:id?", component: CustomerManage },
+  { path: "/import-from-file", component: ImportFromFile },
 ];
 
 const router = new VueRouter({

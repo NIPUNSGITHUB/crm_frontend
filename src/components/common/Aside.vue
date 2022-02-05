@@ -7,14 +7,18 @@
       </a>
       <router-link class="list-group-item" to="/index-page"
         ><span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span>
-        Customers <span class="badge">12</span></router-link
-      >
-      
-       <router-link :to="'/manage-customer/0'"  class="list-group-item"
+        Customers
+      </router-link>
+
+      <router-link :to="'/manage-customer/0'" class="list-group-item"
         ><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
-        Manage Customers <span class="badge">33</span></router-link
-      >
-       
+        Manage Customers
+      </router-link>
+
+      <router-link :to="'/import-from-file'" class="list-group-item"
+        ><span class="glyphicon glyphicon-file" aria-hidden="true"></span>
+        Import CSV
+      </router-link>
     </div>
 
     <!-- <div class="well">
