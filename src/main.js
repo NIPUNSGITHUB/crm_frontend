@@ -1,24 +1,27 @@
-import Vue from 'vue'
-import App from './App.vue'
-import VueRouter from 'vue-router'
+import Vue from "vue";
+import App from "./App.vue";
+import VueRouter from "vue-router";
+import axios from 'axios'
+import VueAxios from 'vue-axios'
 
-Vue.use(VueRouter)
-Vue.config.productionTip = false
- 
-import Home from "./components/Home.vue";
-import ManageCustomer from "./components/customer/ManageCustomer.vue";
+Vue.use(VueRouter);
+Vue.use(VueAxios, axios);
+
+Vue.config.productionTip = false;
+
+import CustomerList from "./components/customer/CustomerList.vue";
+import CustomerManage from "./components/customer/CustomerManage.vue";
 
 const routes = [
- { path: '/index-page', component: Home },
- { path: '/manage-customer', component: ManageCustomer }
-]
+  { path: "/index-page", component: CustomerList },
+  { path: "/manage-customer", component: CustomerManage },
+];
 
 const router = new VueRouter({
-  routes // short for `routes: routes`
-})
-
+  routes, // short for `routes: routes`
+});
 
 new Vue({
   router,
-  render: h => h(App),
-}).$mount('#app')
+  render: (h) => h(App),
+}).$mount("#app");

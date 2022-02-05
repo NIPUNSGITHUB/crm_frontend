@@ -53,10 +53,12 @@ import PivotSpace from "./components/common/PivotSpace.vue";
 import SiteHeader from "./components/common/SiteHeader.vue";
 import SiteFooter from "./components/common/SiteFooter.vue";
 
+import 'jquery/src/jquery.js'
+//import "/src/assets/js/jquery.min.js";
 import "/src/assets/css/bootstrap.min.css";
 import "/src/assets/css/style.css";
-import "jquery/src/jquery.js";
 import "/src/assets/js/bootstrap.min.js";
+//import "/src/assets/js/fontawesome.js";
 /*import 'bootstrap/dist/css/bootstrap.min.css'
 import 'jquery/src/jquery.js'
 import 'bootstrap/dist/js/bootstrap.min.js'*/
