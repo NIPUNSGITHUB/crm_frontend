@@ -105,10 +105,10 @@ export default {
       customer: {
         id: 0,
         title: "Mr",
-        first_name: "nipun",
-        last_name: "gdf",
-        phone_number: "gdfg",
-        email: "dfgdfg",
+        first_name: '',
+        last_name: '',
+        phone_number: '',
+        email: '',
         is_active: 1,
       },
     };
