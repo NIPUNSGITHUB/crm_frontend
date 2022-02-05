@@ -1,11 +1,11 @@
 <template>
   <div class="col-md-3">
-    <div class="list-group">
-      <a href="index.html" class="list-group-item active main-color-bg">
-        <span class="glyphicon glyphicon-cog" aria-hidden="true"></span>
+    <div class="list-group"> 
+      <router-link class="list-group-item active main-color-bg" to="/"
+        ><span class="glyphicon glyphicon-cog" aria-hidden="true"></span>
         Dashboard
-      </a>
-      <router-link class="list-group-item" to="/index-page"
+      </router-link>
+      <router-link class="list-group-item" to="/"
         ><span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span>
         Customers
       </router-link>

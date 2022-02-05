@@ -17,7 +17,7 @@ import ImportFromFile from "./components/customer/ImportFromFile.vue";
 
 
 const routes = [
-  { path: "/index-page", component: CustomerList },
+  { path: "/", component: CustomerList },
   { path: "/manage-customer/:id?", component: CustomerManage },
   { path: "/import-from-file", component: ImportFromFile },
 ];
