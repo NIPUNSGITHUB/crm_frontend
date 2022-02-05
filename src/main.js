@@ -5,9 +5,12 @@ import VueRouter from 'vue-router'
 Vue.use(VueRouter)
 Vue.config.productionTip = false
  
+import Home from "./components/Home.vue";
+import ManageCustomer from "./components/customer/ManageCustomer.vue";
+
 const routes = [
- { path: '/foo', component: null },
-  /* { path: '/bar', component: Bar }*/
+ { path: '/index-page', component: Home },
+ { path: '/manage-customer', component: ManageCustomer }
 ]
 
 const router = new VueRouter({

@@ -5,18 +5,16 @@
         <span class="glyphicon glyphicon-cog" aria-hidden="true"></span>
         Dashboard
       </a>
-      <a href="pages.html" class="list-group-item"
+      <router-link class="list-group-item" to="/index-page"
         ><span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span>
-        Customers <span class="badge">12</span></a
+        Customers <span class="badge">12</span></router-link
       >
-     <a href="posts.html" class="list-group-item"
+      
+       <router-link to="/manage-customer" class="list-group-item"
         ><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
-        Manage Customers <span class="badge">33</span></a
+        Manage Customers <span class="badge">33</span></router-link
       >
-       <!-- <a href="users.html" class="list-group-item"
-        ><span class="glyphicon glyphicon-user" aria-hidden="true"></span> Users
-        <span class="badge">203</span></a
-      > -->
+       
     </div>
 
     <!-- <div class="well">
